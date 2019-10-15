@@ -35,7 +35,7 @@ func addFiles(w *zip.Writer, basePath string) {
 
 func GenZip(basename string, steps int) {
     // zip everything
-	zipFile := fmt.Sprintf("%s.zip", basename)
+	zipFile := fmt.Sprintf("%s.ddw", basename)
 	outFile, err := os.Create(zipFile)
     if err != nil {
 		panic("failed to create zip file")
