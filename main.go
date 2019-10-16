@@ -56,7 +56,8 @@ func process() {
 func main() {
 	defer func() {
         if r := recover(); r != nil {
-            fmt.Println("ERROR:", r)
+			fmt.Println("ERROR:", r)
+			os.Exit(5)
         }
     }()
 
