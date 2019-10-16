@@ -1,13 +1,13 @@
 # DynDesktopBuilder
-This is a tool to generate theme for [WinDynamicDesktop](https://github.com/t1m0thyj/WinDynamicDesktop) from a single image.
+This is a tool to generate themes for [WinDynamicDesktop](https://github.com/t1m0thyj/WinDynamicDesktop) from one static image.
+Basically, this tool generate images with decreasing brightness (up to -50%) and package everything in a bundle.
 
-# Build
+# Build & usage
 Use `make` to build `DynDesktopBuilder`.
 
-# Usage
 DynDesktopBuilder \<-steps=10> \<imagefile>
-
+\
 with `steps`: number of images to generate
 
 # Source code
-Do whatever you want with this source code.
+Do whatever you want with this source code :-)

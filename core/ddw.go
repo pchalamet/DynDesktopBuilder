@@ -33,10 +33,11 @@ func addFiles(w *zip.Writer, basePath string) {
 }
 
 
-func GenZip(basename string, steps int) {
+func GenTheme(workDir string, steps int) string {
     // zip everything
-	zipFile := fmt.Sprintf("%s.ddw", basename)
-	outFile, err := os.Create(zipFile)
+    ddwFile := fmt.Sprintf("%s.ddw", workDir)
+
+	outFile, err := os.Create(ddwFile)
     if err != nil {
 		panic("failed to create zip file")
     }
@@ -46,5 +47,7 @@ func GenZip(basename string, steps int) {
     zipArch := zip.NewWriter(outFile)
 	defer zipArch.Close()
 
-	addFiles(zipArch, basename)
+    addFiles(zipArch, workDir)
+    
+    return ddwFile
 }

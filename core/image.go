@@ -11,9 +11,9 @@ import "os"
 import "github.com/disintegration/imaging"
 
 
-func writeImage(basename string, step int, img image.Image) {
+func writeImage(workDir string, step int, img image.Image) {
 	fname := fmt.Sprintf("image_%d.png", step)
-	outFile := filepath.Join(basename, fname)
+	outFile := filepath.Join(workDir, fname)
 
 	fmt.Println("Writing to file ", outFile)
 
@@ -29,8 +29,8 @@ func writeImage(basename string, step int, img image.Image) {
 	}
 }
 
-func ProcessImage(filename string, basename string, steps int) {
-	inFile, err := os.Open(filename)
+func ProcessImage(workDir string, sourceImage string, steps int) {
+	inFile, err := os.Open(sourceImage)
 	if err != nil {
 		panic("missing image file")
 	}
@@ -42,10 +42,10 @@ func ProcessImage(filename string, basename string, steps int) {
 	}
 
 	// generate all images
-	writeImage(basename, 1, imageData)
+	writeImage(workDir, 1, imageData)
 	for step:=2; step<=steps; step++ {
 		dark := -60.0 * math.Sin(float64(step) / float64(steps))
 		darkImg := imaging.AdjustBrightness(imageData, dark)
-		writeImage(basename, step, darkImg)
+		writeImage(workDir, step, darkImg)
 	}
 }

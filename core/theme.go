@@ -22,7 +22,7 @@ type Theme struct {
 
 
 
-func WriteTheme(basename string, steps int) {
+func WriteTheme(workDir string, steps int) {
 	sunriseLen := steps - 2
 	if sunriseLen < 0 {
 		sunriseLen = 0
@@ -50,7 +50,7 @@ func WriteTheme(basename string, steps int) {
 					 SunsetImageList: sunsetIndex,
 					 NightImageList: []int { steps } }
 
-	outFile := filepath.Join(basename, "theme.json")
+	outFile := filepath.Join(workDir, "theme.json")
 	outputFile, err := os.Create(outFile)
 	if err != nil {
 		panic("failed to write json file")
