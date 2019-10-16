@@ -6,6 +6,7 @@ import "os"
 import "encoding/json"
 
 
+// see https://github.com/t1m0thyj/WinDynamicDesktop/wiki/Creating-custom-themes
 type Theme struct {
 	ImagesZipUri string `json:"imagesZipUri"`
 	ImageFilename string `json:"imageFilename"`
