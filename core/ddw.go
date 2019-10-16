@@ -9,9 +9,7 @@ import "os"
 
 func addFiles(w *zip.Writer, basePath string) {
     files, err := ioutil.ReadDir(basePath)
-    if err != nil {
-		panic("failed to read dir")
-    }
+    CheckError(err, "failed to read dir")
 
     for _, file := range files {
         if !file.IsDir() {
@@ -37,10 +35,8 @@ func GenTheme(workDir string, steps int) string {
     // zip everything
     ddwFile := fmt.Sprintf("%s.ddw", workDir)
 
-	outFile, err := os.Create(ddwFile)
-    if err != nil {
-		panic("failed to create zip file")
-    }
+    outFile, err := os.Create(ddwFile)
+    CheckError(err, "failed to create theme file")
     defer outFile.Close()
 
     // Create a new zip archive.

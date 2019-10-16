@@ -18,28 +18,20 @@ func writeImage(workDir string, step int, img image.Image) {
 	fmt.Println("Writing to file ", outFile)
 
 	outputFile, err := os.Create(outFile)
-	if err != nil {
-		panic("failed to write output file")
-	}
+	CheckError(err, "failed to write output file")
 	defer outputFile.Close()
 
 	err = png.Encode(outputFile, img)
-	if err != nil {
-		panic("failed to write output file")
-	}
+	CheckError(err, "failed to write output file")
 }
 
 func ProcessImage(workDir string, sourceImage string, steps int) {
 	inFile, err := os.Open(sourceImage)
-	if err != nil {
-		panic("missing image file")
-	}
+	CheckError(err, "missing image file")
 	defer inFile.Close()
 
 	imageData, _, err := image.Decode(inFile)
-	if err != nil {
-		panic("failed to decode provided image")
-	}
+	CheckError(err, "failed to decode provided image")
 
 	// generate all images
 	writeImage(workDir, 1, imageData)

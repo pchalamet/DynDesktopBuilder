@@ -52,15 +52,11 @@ func WriteTheme(workDir string, steps int) {
 
 	outFile := filepath.Join(workDir, "theme.json")
 	outputFile, err := os.Create(outFile)
-	if err != nil {
-		panic("failed to write json file")
-	}
+	CheckError(err, "failed to write json file")
 	defer outputFile.Close()	
 
 	encoder := json.NewEncoder(outputFile)
 	encoder.SetIndent("", " ")
 	err = encoder.Encode(theme)
-	if err != nil {
-		panic("failed to encode to json")
-	}
+	CheckError(err, "failed to encode to json")
 }
