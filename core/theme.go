@@ -42,7 +42,7 @@ func WriteTheme(workDir string, steps int) {
 	// generate json
 	theme := Theme { ImagesZipUri: "", 
 					 ImageFilename: "image_*.png",
-					 ImageCredits: "",
+					 ImageCredits: "generated using DynDesktopBuilder",
 					 DayHighlight: 1,
 					 NightHighlight: steps,
 					 DayImageList: []int { 1 },
