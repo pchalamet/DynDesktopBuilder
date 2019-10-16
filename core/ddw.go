@@ -14,18 +14,13 @@ func addFiles(w *zip.Writer, basePath string) {
     for _, file := range files {
         if !file.IsDir() {
             dat, err := ioutil.ReadFile(filepath.Join(basePath, file.Name()))
-            if err != nil {
-                fmt.Println(err)
-            }
-            // Add some files to the archive.
+            CheckError(err, "failed to read file")
+
             f, err := w.Create(file.Name())
-            if err != nil {
-                fmt.Println(err)
-            }
+            CheckError(err, "failed to create file")
+
             _, err = f.Write(dat)
-            if err != nil {
-                fmt.Println(err)
-            }
+            CheckError(err, "failed to write file")
         }
     }
 }
