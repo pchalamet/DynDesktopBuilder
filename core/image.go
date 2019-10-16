@@ -44,7 +44,7 @@ func ProcessImage(workDir string, sourceImage string, steps int) {
 	// generate all images
 	writeImage(workDir, 1, imageData)
 	for step:=2; step<=steps; step++ {
-		dark := -60.0 * math.Sin(float64(step) / float64(steps))
+		dark := -50.0 * math.Sin(float64(step) / float64(steps))
 		darkImg := imaging.AdjustBrightness(imageData, dark)
 		writeImage(workDir, step, darkImg)
 	}

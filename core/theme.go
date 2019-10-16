@@ -23,19 +23,19 @@ type Theme struct {
 
 
 func WriteTheme(workDir string, steps int) {
-	sunriseLen := steps - 2
-	if sunriseLen < 0 {
-		sunriseLen = 0
+	sunsetLen := steps - 2
+	if sunsetLen < 0 {
+		sunsetLen = 0
 	}
 
-	sunriseIndex := make([]int, sunriseLen)
-	for idx := 0; idx < len(sunriseIndex); idx++ {
-		sunriseIndex[idx] = idx+2
+	sunsetIndex := make([]int, sunsetLen)
+	for idx := 0; idx < sunsetLen; idx++ {
+		sunsetIndex[idx] = idx+2
 	}
 
-	sunsetIndex := make([]int, len(sunriseIndex))
-	for idx := 0; idx < len(sunriseIndex); idx++ {
-		sunsetIndex[idx] = sunriseIndex[len(sunriseIndex) - idx - 1]
+	sunriseIndex := make([]int, sunsetLen)
+	for idx := 0; idx < sunsetLen; idx++ {
+		sunriseIndex[idx] = sunsetIndex[sunsetLen - idx - 1]
 	}
 
 
